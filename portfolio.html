@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผลงาน | พอร์ตโฟลิโอส่วนตัว</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Font Awesome: ชุดไอคอน -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <!-- ============== Header + เมนู ============== -->
+    <header class="header">
+        <div class="container header-content">
+            <div>
+                <h1 class="header-title"><i class="fa-solid fa-laptop-code"></i> ชัยณรินทร์ ผุดผาย</h1>
+                <p class="header-subtitle">Portfolio แนะนำตัว</p>
+            </div>
+
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    <li><a href="about.html">ประวัติและทักษะ</a></li>
+                    <!-- หน้านี้คือ "ผลงาน" จึงใส่ active ที่เมนูนี้ -->
+                    <li><a href="portfolio.html" class="active">ผลงาน</a></li>
+                    <li><a href="contact.html">ติดต่อ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="page-title">ผลงานของฉัน</h2>
+        <p class="page-subtitle">เลือกหมวดหมู่เพื่อดูผลงานที่สนใจ</p>
+
+        <section>
+            <!-- ===== ระบบกรองผลงานด้วย CSS ล้วน (ไม่ใช้ JavaScript) =====
+                 วิธีทำงาน 3 ขั้นตอน:
+                 1) มีปุ่ม radio ซ่อนไว้ 4 ปุ่ม (name="category" เหมือนกัน = เลือกได้ทีละปุ่ม)
+                 2) label ด้านล่างผูกกับ radio ด้วย for="id ของ radio" -> กด label = เลือก radio
+                 3) CSS ดูว่า radio ตัวไหนถูกเลือก (:checked) แล้วซ่อน/แสดงการ์ดตามหมวด
+                 ข้อสำคัญ: radio ต้องอยู่ "ก่อน" nav และ grid และอยู่ใน section เดียวกัน CSS (ตัวเชื่อม ~) จึงจะทำงาน -->
+            <input type="radio" id="filter-all" name="category" class="filter-radio" checked>
+            <!-- checked = เลือกไว้ตั้งแต่เปิดหน้า -->
+            <input type="radio" id="filter-web" name="category" class="filter-radio">
+            <input type="radio" id="filter-design" name="category" class="filter-radio">
+            <input type="radio" id="filter-group" name="category" class="filter-radio">
+
+            <!-- ปุ่มเลือกหมวดหมู่ (label ที่ผู้ใช้กดจริงๆ) -->
+            <nav class="filter-nav">
+                <label for="filter-all"><i class="fa-solid fa-house"></i> ทั้งหมด</label>
+                <label for="filter-web"><i class="fa-solid fa-code"></i> งานเว็บไซต์</label>
+                <label for="filter-design"><i class="fa-solid fa-palette"></i> งานออกแบบ</label>
+                <label for="filter-group"><i class="fa-solid fa-people-group"></i> งานกลุ่ม</label>
+            </nav>
+
+            <!-- ตารางการ์ดผลงาน -->
+            <div class="project-grid">
+
+                <!-- ===== ผลงานที่ 1 =====
+                     class="show-web" = ป้ายบอกว่าการ์ดนี้อยู่หมวดงานเว็บไซต์
+                     (เมื่อเลือก "งานเว็บไซต์" CSS จะแสดงเฉพาะการ์ดที่มี class นี้) -->
+                <article class="project-card show-web">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="หน้าจอเว็บไซต์คู่มือสัตว์เลี้ยง">
+
+                    <div class="project-content">
+                        <h2>เว็บไซต์คู่มือสัตว์เลี้ยง</h2>
+                        <p class="project-type">งานเว็บไซต์ | งานในรายวิชา</p>
+                        <p>เว็บไซต์แนะนำสัตว์เลี้ยงแต่ละประเภท มีปุ่มกดเลือกหมวดหมู่ และตารางเปรียบเทียบข้อมูล</p>
+                        <p><strong>หน้าที่:</strong> เขียนโค้ดและออกแบบทั้งหมด</p>
+
+                        <!-- เครื่องมือ/เทคโนโลยีที่ใช้ (แสดงเป็นป้ายเล็กๆ) -->
+                        <ul class="tools">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>Grid</li>
+                        </ul>
+
+                        <!-- ลิงก์ชมผลงาน (ใส่ลิงก์ GitHub จริงของคุณแทน) -->
+                        <a href="https://github.com/Chainarin04/Web--Workshop" target="_blank">ดูผลงานบน GitHub</a>
+                    </div>
+                </article>
+
+                <!-- ===== ผลงานที่ 2: หมวดงานออกแบบ ===== -->
+                <article class="project-card show-design">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="งานออกแบบเว็บไซต์พอร์ตโฟลิโอ">
+
+                    <div class="project-content">
+                        <h2>ออกแบบเว็บไซต์พอร์ตโฟลิโอ</h2>
+                        <p class="project-type">งานออกแบบ | Mini Project</p>
+                        <p>วางโครงสร้างหน้าเว็บทั้ง 4 หน้า เลือกโทนสีน้ำเงิน และออกแบบการจัดวางก่อนลงมือเขียนโค้ด</p>
+                        <p><strong>หน้าที่:</strong> ออกแบบโครงสร้างและหน้าตาทั้งหมด</p>
+
+                        <ul class="tools">
+                            <li>Prototype</li>
+                            <li>Semantic HTML</li>
+                            <li>CSS Grid</li>
+                        </ul>
+
+                        <a href="https://www.figma.com/design/uOJ1tzN3IykFOsydp6JsxC/portfolio?node-id=0-1&t=ghzYckPCGq5Cgdow-1" target="_blank">ดูผลงานบน Figma</a>
+                    </div>
+                </article>
+
+                <!-- ===== ผลงานที่ 3: หมวดงานกลุ่ม (show-group) ===== -->
+                <!-- ===== ผลงานที่ 3: หมวดงานกลุ่ม ===== -->
+                <article class="project-card show-group">
+                    <img src="https://images.unsplash.com/photo-1660616246653-e2c57d1077b9?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="โค้ด Python Hello World บนหน้าจอคอมพิวเตอร์">
+
+                    <div class="project-content">
+                        <h2>บอท Discord จัดการรายชื่อสมาชิก</h2>
+                        <p class="project-type">งานกลุ่ม | บอทดิส</p>
+                        <p>บอทที่ใช้ในเซิร์ฟเวอร์ Discord สมาชิกพิมพ์คำสั่งเพื่อลงทะเบียนชื่อและรหัสนักศึกษา และดูรายชื่อสมาชิกทั้งหมดได้</p>
+                        <p><strong>หน้าที่:</strong> เขียนโค้ดบอทด้วยภาษา Python</p>
+
+                        <ul class="tools">
+                            <li>Python</li>
+                            <li>discord.py</li>
+                            <li>ทำงานเป็นทีม</li>
+                        </ul>
+
+                        <a href="https://github.com/Chainari/Guild-_War.git" target="_blank">ดูผลงานบน GitHub</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ============== Footer (เหมือนทุกหน้า) ============== -->
+    <footer class="footer">
+        <!-- &copy; = สัญลักษณ์ © -->
+        <p>&copy; 2026 ชัยณรินทร์ ผุดผาย</p>
+        <ul class="footer-links">
+            <!-- target="_blank" = เปิดลิงก์ในแท็บใหม่ (ใช้กับลิงก์ภายนอก) -->
+            <li><a href="https://github.com/Chainarin04" target="_blank">GitHub</a></li>
+            <!-- mailto: = กดแล้วเปิดโปรแกรมอีเมล -->
+            <li><a href="https://mail.google.com/mail/?view=cm&to=pakzaza115@gmail.com">Email</a></li>
+        </ul>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ติดต่อ | พอร์ตโฟลิโอส่วนตัว</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Font Awesome: ชุดไอคอน (ไอคอนแบรนด์เช่น github ใช้ class fa-brands) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <!-- ============== Header + เมนู ============== -->
+    <header class="header">
+        <div class="container header-content">
+            <div>
+                <h1 class="header-title"><i class="fa-solid fa-laptop-code"></i> ชัยณรินทร์ ผุดผาย</h1>
+                <p class="header-subtitle">Portfolio แนะนำตัว</p>
+            </div>
+
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    <li><a href="about.html">ประวัติและทักษะ</a></li>
+                    <li><a href="portfolio.html">ผลงาน</a></li>
+                    <!-- หน้านี้คือ "ติดต่อ" จึงใส่ active ที่เมนูนี้ -->
+                    <li><a href="contact.html" class="active">ติดต่อ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="page-title">ติดต่อฉัน</h2>
+        <p class="page-subtitle">สนใจร่วมงานหรืออยากสอบถามเพิ่มเติม ติดต่อได้ตามช่องทางด้านล่าง</p>
+
+        <!-- .contact-grid แบ่งเป็น 2 คอลัมน์: ซ้าย = ช่องทางติดต่อ, ขวา = แบบฟอร์ม
+             (บนมือถือ CSS จะเปลี่ยนเป็น 1 คอลัมน์) -->
+        <div class="contact-grid">
+
+            <!-- ===== คอลัมน์ซ้าย: ช่องทางติดต่อ ===== -->
+            <section class="card">
+                <h3>ช่องทางติดต่อ</h3>
+                <ul class="contact-list">
+                    <!-- แต่ละบรรทัด = ไอคอน + ลิงก์ -->
+                    <li><i class="fa-solid fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&to=pakzaza115@gmail.com" target="_blank">pakzaza115@gmail.com</a></li>
+                    <li><i class="fa-brands fa-github"></i> <a href="https://github.com/Chainarin04" target="_blank">Chainarin Phudphai</a></li>
+                    <li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/chainarin.phudphai" target="_blank">Chainarin Phudphai</a></li>
+                    <li><i class="fa-brands fa-instagram"></i> <a href="https://www.instagram.com/chna_04/" target="_blank">chna_04</a></li>
+                    <li><i class="fa-solid fa-location-dot"></i> นครปฐม ประเทศไทย</li>
+                </ul>
+            </section>
+
+            <!-- ===== คอลัมน์ขวา: แบบฟอร์มติดต่อจำลอง ===== -->
+            <section class="card form-section">
+                <h3>ส่งข้อความถึงฉัน</h3>
+
+                <!-- <form> = ฟอร์มรับข้อมูล (action ว่างไว้ เพราะเป็นฟอร์มจำลอง ยังไม่ส่งข้อมูลไปไหน) -->
+                <form action="" method="">
+                    <!-- <fieldset> = กรอบจัดกลุ่มช่องกรอก / <legend> = ชื่อกรอบ -->
+                    <fieldset>
+                        <legend>แบบฟอร์มติดต่อ</legend>
+
+                        <!-- ช่องกรอกแต่ละช่อง
+                             <label for="name"> ต้องตรงกับ <input id="name"> -> กดที่ข้อความแล้วเคอร์เซอร์ไปอยู่ในช่องให้ -->
+                        <div class="form-group">
+                            <label for="name">ชื่อ-นามสกุล</label>
+                            <!-- type="text" = ช่องพิมพ์ข้อความ / placeholder = ข้อความจางๆ บอกใบ้ -->
+                            <input type="text" id="name" name="name" placeholder="กรอกชื่อของคุณ">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">อีเมล</label>
+                            <!-- type="email" = เบราว์เซอร์ตรวจให้ว่าพิมพ์รูปแบบอีเมลถูกไหม -->
+                            <input type="email" id="email" name="email" placeholder="you@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">ข้อความ</label>
+                            <!-- textarea = ช่องพิมพ์ข้อความหลายบรรทัด / rows="5" = สูง 5 บรรทัด -->
+                            <textarea id="message" name="message" rows="5" placeholder="พิมพ์ข้อความที่นี่"></textarea>
+                        </div>
+
+                        <!-- ปุ่มส่งฟอร์ม (ตกแต่งด้วย class เดียวกับปุ่มหน้าแรก) -->
+                        <button type="submit" class="btn btn-primary">ส่งข้อความ</button>
+                        <p class="form-note">* แบบฟอร์มนี้เป็นแบบจำลอง ยังไม่ส่งข้อความจริง</p>
+                    </fieldset>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ============== Footer (เหมือนทุกหน้า) ============== -->
+    <footer class="footer">
+        <!-- &copy; = สัญลักษณ์ © -->
+        <p>&copy; 2026 ชัยณรินทร์ ผุดผาย</p>
+        <ul class="footer-links">
+            <!-- target="_blank" = เปิดลิงก์ในแท็บใหม่ (ใช้กับลิงก์ภายนอก) -->
+            <li><a href="https://github.com/Chainarin04" target="_blank">GitHub</a></li>
+            <!-- mailto: = กดแล้วเปิดโปรแกรมอีเมล -->
+            <li><a href="https://mail.google.com/mail/?view=cm&to=pakzaza115@gmail.com">Email</a></li>
+        </ul>
+    </footer>
+
+</body>
+
+</html>

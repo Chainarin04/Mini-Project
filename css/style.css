@@ -1,0 +1,760 @@
+/* =========================================================
+   style.css — ไฟล์ CSS กลางที่ทุกหน้า (4 หน้า) ใช้ร่วมกัน
+   ทุกบรรทัดมีคอมเมนต์อธิบาย
+   ลำดับ: ตัวแปรสี > พื้นฐาน > header > navbar > หัวข้อ > ปุ่ม
+          > หน้าแรก > การ์ด > ผลงาน > ติดต่อ > footer > responsive
+========================================================= */
+
+
+/* ----- รีเซ็ตค่าเริ่มต้นของเบราว์เซอร์ ----- */
+
+* {
+    /* * = ทุกองค์ประกอบในหน้า */
+    box-sizing: border-box;
+    /* ความกว้างที่ตั้ง รวม padding และขอบแล้ว (คำนวณขนาดง่าย) */
+    margin: 0;
+    /* ล้างระยะห่างด้านนอกที่เบราว์เซอร์ใส่มาเอง */
+    padding: 0;
+    /* ล้างระยะห่างด้านในที่เบราว์เซอร์ใส่มาเอง */
+}
+
+
+/* ----- ตัวแปรสี: ประกาศไว้ที่เดียว เรียกใช้ด้วย var(ชื่อ) แก้ที่นี่ที่เดียวสีเปลี่ยนทั้งเว็บ ----- */
+
+:root {
+    /* :root = ระดับบนสุดของหน้า ตัวแปรใช้ได้ทุกที่ */
+    /* สีหลักของเว็บไซต์ */
+    --primary-color: #1f4fd8;
+    /* น้ำเงินหลัก: ปุ่ม หัวข้อ เมนูที่เลือก */
+    --primary-dark-color: #10265e;
+    /* น้ำเงินเข้ม: หัวข้อรอง */
+    --secondary-color: #219cd9;
+    /* ฟ้า: สีเสริม */
+    /* สีข้อความ */
+    --text-color: #1f2937;
+    /* ข้อความทั่วไป */
+    --muted-text-color: #5c6b83;
+    /* ข้อความรอง (เทาน้ำเงิน) */
+    --light-text-color: #ffffff;
+    /* ข้อความสีขาว ใช้บนพื้นเข้ม */
+    /* สีพื้นหลัง */
+    --body-bg-color: #f4f7fc;
+    /* พื้นหลังทั้งหน้า */
+    --card-bg-color: #ffffff;
+    /* พื้นหลังการ์ด */
+    --tag-bg-color: #e8eeff;
+    /* พื้นหลังป้ายเล็กและตอนชี้เมนู */
+    --footer-bg-color: #0d1b2a;
+    /* พื้นหลัง footer */
+    /* สีเงาและขอบ */
+    --box-shadow: 0 4px 10px rgb(215, 225, 245);
+    /* เงา: เลื่อนขวา 0, ลง 4px, เบลอ 10px */
+    --border-color: #d8e0ec;
+    /* สีเส้นขอบบางๆ */
+}
+
+html {
+    scroll-behavior: smooth;
+    /* กดลิงก์ภายในหน้าแล้วเลื่อนอย่างนุ่มนวล */
+}
+
+
+/* ----- ค่าพื้นฐานของทั้งหน้า ----- */
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* ฟอนต์ ถ้าไม่มีตัวแรกใช้ตัวถัดไป */
+    line-height: 1.6;
+    /* ระยะห่างระหว่างบรรทัด 1.6 เท่า ให้อ่านง่าย */
+    color: var(--text-color);
+    /* สีข้อความทั่วไป */
+    background-color: var(--body-bg-color);
+    /* สีพื้นหลังหน้า */
+}
+
+img {
+    max-width: 100%;
+    /* รูปกว้างไม่เกินพื้นที่ที่อยู่ ไม่ล้นจอ */
+    display: block;
+    /* ให้เป็นบล็อก เพื่อตัดช่องว่างเล็กๆ ใต้รูป */
+}
+
+a {
+    color: var(--primary-color);
+    /* ลิงก์สีน้ำเงินหลัก */
+    text-decoration: none;
+    /* เอาเส้นใต้ลิงก์ออก */
+}
+
+ul {
+    list-style-type: none;
+    /* เอาจุดหน้ารายการออก */
+}
+
+
+/* .container: กล่องจัดเนื้อหาให้อยู่กลางหน้า */
+
+.container {
+    max-width: 1100px;
+    /* กว้างสุด 1100px จอใหญ่จะไม่กว้างเกินไป */
+    margin: 0 auto;
+    /* บนล่าง 0 ซ้ายขวา auto = จัดกึ่งกลาง */
+    width: 90%;
+    /* กว้าง 90% ของจอ เหลือขอบซ้ายขวา */
+}
+
+
+/* =========================================================
+   Header (ส่วนหัวเว็บ)
+========================================================= */
+
+.header {
+    background-color: var(--card-bg-color);
+    /* พื้นสีขาว */
+    box-shadow: var(--box-shadow);
+    /* เงาใต้แถบ */
+    position: sticky;
+    /* เลื่อนหน้าแล้วแถบนี้ติดอยู่ */
+    top: 0;
+    /* ติดที่ขอบบนสุดของจอ */
+    z-index: 10;
+    /* ลำดับชั้น ให้อยู่ทับเนื้อหาอื่น */
+}
+
+.header-content {
+    display: flex;
+    /* ลูกข้างในเรียงเป็นแถว */
+    justify-content: space-between;
+    /* ดันชื่อไปซ้ายสุด เมนูไปขวาสุด */
+    align-items: center;
+    /* จัดกึ่งกลางแนวตั้ง */
+    padding-block: 1rem;
+    /* ระยะด้านในบนและล่าง */
+}
+
+.header-title {
+    color: var(--primary-color);
+    /* ชื่อสีน้ำเงิน */
+    font-size: 1.6rem;
+    /* ขนาดตัวอักษร (1rem = ขนาดปกติ) */
+}
+
+.header-subtitle {
+    color: var(--muted-text-color);
+    /* สีเทาน้ำเงิน */
+    font-size: 0.9rem;
+    /* เล็กกว่าปกติเล็กน้อย */
+}
+
+
+/* =========================================================
+   Navbar (เมนู)
+========================================================= */
+
+.nav-list {
+    display: flex;
+    /* เมนูเรียงเป็นแถว */
+    gap: 0.5rem;
+    /* ช่องว่างระหว่างปุ่มเมนู */
+}
+
+.nav-list a {
+    display: inline-block;
+    /* ให้ใส่ padding ได้เต็มที่ */
+    padding: 0.5rem 1.1rem;
+    /* ระยะด้านใน: บนล่าง 0.5rem ซ้ายขวา 1.1rem */
+    color: var(--text-color);
+    /* สีตัวอักษรเมนู */
+    border-radius: 60px;
+    /* ขอบมนมาก ได้ทรงแคปซูล */
+    transition: transform 0.3s, background-color 0.3s;
+    /* ให้การเปลี่ยนค่อยๆ เกิดใน 0.3 วินาที */
+}
+
+.nav-list a:hover {
+    /* :hover = ตอนเอาเมาส์ไปชี้ */
+    background-color: var(--tag-bg-color);
+    /* เปลี่ยนพื้นเป็นฟ้าอ่อน */
+    transform: translateY(-3px);
+    /* ยกขึ้น 3px (ติดลบ = ขึ้นบน) */
+}
+
+.nav-list a.active {
+    /* เมนูของหน้าปัจจุบัน (class active ใน HTML) */
+    background-color: var(--primary-color);
+    /* พื้นน้ำเงิน */
+    color: var(--light-text-color);
+    /* ตัวอักษรขาว */
+}
+
+
+/* =========================================================
+   หัวข้อของแต่ละหน้า
+========================================================= */
+
+.page-title {
+    text-align: center;
+    /* จัดกลางหน้า */
+    color: var(--primary-color);
+    /* สีน้ำเงิน */
+    margin-block: 2rem 0.5rem;
+    /* ระยะนอก: บน 2rem ล่าง 0.5rem */
+}
+
+.page-subtitle {
+    text-align: center;
+    /* จัดกลางหน้า */
+    color: var(--muted-text-color);
+    /* สีรอง */
+    margin-bottom: 2rem;
+    /* ระยะห่างด้านล่าง */
+}
+
+.section-title {
+    text-align: center;
+    /* จัดกลางหน้า */
+    color: var(--primary-dark-color);
+    /* น้ำเงินเข้ม */
+    margin-block: 2.5rem 1.5rem;
+    /* ระยะนอก: บน 2.5rem ล่าง 1.5rem */
+}
+
+
+/* =========================================================
+   ปุ่ม
+========================================================= */
+
+.btn {
+    display: inline-block;
+    /* ให้ใส่ padding ได้ และปุ่มวางเรียงข้างกันได้ */
+    padding: 0.6rem 1.4rem;
+    /* ระยะด้านใน */
+    border-radius: 0.5rem;
+    /* ขอบมนเล็กน้อย */
+    transition: transform 0.3s;
+    /* การเลื่อนค่อยๆ เกิดใน 0.3 วินาที */
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    /* ชี้เมาส์แล้วปุ่มลอยขึ้น 5px */
+}
+
+.btn-primary {
+    /* ปุ่มแบบทึบ */
+    background-color: var(--primary-color);
+    /* พื้นน้ำเงิน */
+    color: var(--light-text-color);
+    /* ตัวอักษรขาว */
+}
+
+.btn-outline {
+    /* ปุ่มแบบเส้นขอบ */
+    border: 2px solid var(--primary-color);
+    /* ขอบน้ำเงินหนา 2px */
+    color: var(--primary-color);
+    /* ตัวอักษรน้ำเงิน */
+}
+
+
+/* =========================================================
+   หน้าแรก (Hero = ส่วนแนะนำตัวด้านบน)
+========================================================= */
+
+.hero {
+    display: grid;
+    /* จัดวางแบบตาราง Grid */
+    grid-template-columns: 1fr 1fr;
+    /* 2 คอลัมน์กว้างเท่ากัน (fr = สัดส่วน) */
+    gap: 2rem;
+    /* ช่องว่างระหว่างคอลัมน์ */
+    align-items: center;
+    /* จัดกึ่งกลางแนวตั้ง */
+    padding-block: 3rem;
+    /* ระยะด้านในบนและล่าง */
+}
+
+.hero-name {
+    font-size: 2.8rem;
+    /* ชื่อตัวใหญ่ */
+    color: var(--primary-dark-color);
+    /* น้ำเงินเข้ม */
+}
+
+.hero-position {
+    color: var(--primary-color);
+    /* สีน้ำเงิน */
+    font-size: 1.3rem;
+    /* ขนาดตัวอักษร */
+    margin-block: 0.5rem 1rem;
+    /* ระยะนอก: บน 0.5rem ล่าง 1rem */
+}
+
+.hero-text {
+    color: var(--muted-text-color);
+    /* สีรอง */
+    margin-bottom: 1.5rem;
+    /* ระยะห่างก่อนถึงปุ่ม */
+}
+
+.hero-buttons {
+    display: flex;
+    /* ปุ่มเรียงข้างกัน */
+    gap: 1rem;
+    /* ช่องว่างระหว่างปุ่ม */
+}
+
+.hero-image img {
+    width: 100%;
+    /* กว้างเต็มช่อง */
+    max-width: 380px;
+    /* แต่ไม่เกิน 380px */
+    height: 380px;
+    /* สูง 380px (กว้าง = สูง จึงเป็นวงกลมได้) */
+    object-fit: cover;
+    /* ครอบรูปเต็มกรอบ ไม่บิดสัดส่วน */
+    border-radius: 50%;
+    /* 50% = ทำเป็นวงกลม */
+    border: 6px solid var(--card-bg-color);
+    /* ขอบขาวหนา 6px */
+    box-shadow: var(--box-shadow);
+    /* เงารอบรูป */
+    margin: 0 auto;
+    /* จัดรูปไว้กึ่งกลางช่อง */
+}
+
+
+/* =========================================================
+   การ์ด (หน้าแรก / ประวัติและทักษะ / ติดต่อ)
+========================================================= */
+
+.card-grid {
+    display: grid;
+    /* จัดวางแบบตาราง */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    /* การ์ดกว้างอย่างน้อย 280px จอกว้างวางหลายใบต่อแถว จอแคบขึ้นบรรทัดใหม่เอง */
+    gap: 1.5rem;
+    /* ช่องว่างระหว่างการ์ด */
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    /* พื้นขาว */
+    box-shadow: var(--box-shadow);
+    /* เงา */
+    border-radius: 0.75rem;
+    /* ขอบมน */
+    padding: 1.5rem;
+    /* ระยะด้านในการ์ด */
+    transition: transform 0.3s;
+    /* การเลื่อนค่อยๆ เกิด */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    /* ชี้เมาส์แล้วการ์ดลอยขึ้น */
+}
+
+.card h3 {
+    color: var(--primary-color);
+    /* หัวข้อการ์ดสีน้ำเงิน */
+    margin-bottom: 0.75rem;
+    /* ระยะห่างใต้หัวข้อ */
+}
+
+.card p {
+    color: var(--muted-text-color);
+    /* ข้อความในการ์ดสีรอง */
+}
+
+.card li {
+    padding-block: 0.4rem;
+    /* ระยะด้านในบนล่างของแต่ละข้อ */
+    border-bottom: 1px solid var(--border-color);
+    /* เส้นคั่นบางๆ ใต้แต่ละข้อ */
+}
+
+.card li:last-child {
+    border-bottom: none;
+    /* :last-child = ข้อสุดท้าย ไม่ต้องมีเส้นคั่น */
+}
+
+
+/* =========================================================
+   หน้าผลงาน — ปุ่มกรองหมวดหมู่ (CSS ล้วน ไม่ใช้ JavaScript)
+   หลักการ: กด label -> radio ที่ซ่อนอยู่ถูกเลือก (:checked)
+            -> CSS ใช้ ~ สั่งซ่อน/แสดงการ์ดตามหมวดที่เลือก
+========================================================= */
+
+.filter-radio {
+    /* ซ่อนปุ่ม radio แต่ยังทำงานได้ */
+    position: absolute;
+    /* ถอดออกจากการจัดวางปกติ ไม่เปลืองที่ */
+    overflow: hidden;
+    /* ตัดส่วนที่เกินทิ้ง */
+    width: 1px;
+    /* ทำให้เล็กเหลือ 1px */
+    height: 1px;
+    clip-path: inset(50%);
+    /* ตัดภาพให้มองไม่เห็น */
+}
+
+.filter-nav {
+    text-align: center;
+    /* ปุ่มเลือกหมวดอยู่กลางหน้า */
+    margin-bottom: 2rem;
+    /* ระยะห่างก่อนถึงการ์ดผลงาน */
+}
+
+.filter-nav label {
+    padding: 0.65rem 1.2rem;
+    /* ระยะด้านในปุ่ม */
+    margin: 0.3rem;
+    /* ระยะห่างระหว่างปุ่ม */
+    color: var(--text-color);
+    /* สีตัวอักษร */
+    background-color: var(--card-bg-color);
+    /* พื้นขาว */
+    border-radius: 60px;
+    /* ทรงแคปซูล */
+    box-shadow: 0 4px rgb(153, 203, 245);
+    /* เงาแข็งสีฟ้าใต้ปุ่ม ให้ดูเหมือนปุ่มนูน */
+    cursor: pointer;
+    /* เมาส์เป็นรูปมือ */
+    transition: transform 0.3s, box-shadow 0.2s;
+    /* ให้การเปลี่ยนค่อยๆ เกิด */
+    display: inline-block;
+    /* วางเรียงข้างกันและใส่ padding ได้ */
+    user-select: none;
+    /* กดแล้วข้อความไม่ถูกไฮไลต์ */
+}
+
+.filter-nav label:hover {
+    transform: translateY(-3px);
+    /* ชี้เมาส์แล้วปุ่มลอยขึ้น */
+    box-shadow: 0 6px rgb(216, 211, 211);
+    /* เงาหนาขึ้นและเปลี่ยนเป็นสีเทา */
+}
+
+
+/* ปุ่มที่ถูกเลือกอยู่: อ่านว่า "ถ้า radio ตัวนี้ถูกเลือก ให้ label ที่ผูกกับมัน (for) เปลี่ยนสี"
+   เครื่องหมาย ~ แปลว่า "พี่น้องที่อยู่ถัดลงไป" */
+
+#filter-all:checked~.filter-nav label[for="filter-all"],
+#filter-web:checked~.filter-nav label[for="filter-web"],
+#filter-design:checked~.filter-nav label[for="filter-design"],
+#filter-group:checked~.filter-nav label[for="filter-group"] {
+    background-color: var(--primary-color);
+    /* พื้นน้ำเงิน */
+    color: var(--light-text-color);
+    /* ตัวอักษรขาว */
+}
+
+
+/* ขั้นที่ 1: ถ้าเลือกหมวดใดหมวดหนึ่ง (ไม่ใช่ "ทั้งหมด") ซ่อนการ์ดทุกใบก่อน */
+
+#filter-web:checked~.project-grid .project-card,
+#filter-design:checked~.project-grid .project-card,
+#filter-group:checked~.project-grid .project-card {
+    display: none;
+    /* none = ซ่อน ไม่แสดงและไม่กินที่ */
+}
+
+
+/* ขั้นที่ 2: แสดงเฉพาะการ์ดที่ตรงหมวดที่เลือกกลับมา */
+
+#filter-web:checked~.project-grid .show-web,
+#filter-design:checked~.project-grid .show-design,
+#filter-group:checked~.project-grid .show-group {
+    display: block;
+    /* block = แสดงปกติ */
+}
+
+.project-grid {
+    display: grid;
+    /* จัดวางแบบตาราง */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    /* การ์ดกว้างอย่างน้อย 300px ปรับจำนวนคอลัมน์ตามขนาดจออัตโนมัติ */
+    gap: 1.5rem;
+    /* ช่องว่างระหว่างการ์ด */
+}
+
+.project-card {
+    background-color: var(--card-bg-color);
+    /* พื้นขาว */
+    box-shadow: var(--box-shadow);
+    /* เงา */
+    border-radius: 0.75rem;
+    /* ขอบมน */
+    overflow: hidden;
+    /* ตัดรูปที่เกินขอบมนของการ์ดออก */
+    transition: transform 0.3s;
+    /* การเลื่อนค่อยๆ เกิด */
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    /* ชี้เมาส์แล้วการ์ดลอยขึ้น */
+}
+
+.project-card img {
+    width: 100%;
+    /* รูปกว้างเต็มการ์ด */
+    height: 12rem;
+    /* สูงคงที่ ทุกการ์ดจะได้เท่ากัน */
+    object-fit: cover;
+    /* ครอบรูปเต็มกรอบ ไม่บิดสัดส่วน */
+}
+
+.project-content {
+    padding: 1.25rem;
+    /* ระยะด้านในส่วนข้อความของการ์ด */
+}
+
+.project-content h2 {
+    color: var(--primary-dark-color);
+    /* ชื่อผลงานน้ำเงินเข้ม */
+    font-size: 1.3rem;
+    /* ขนาดตัวอักษร */
+}
+
+.project-type {
+    color: var(--secondary-color);
+    /* ประเภทผลงานสีฟ้า */
+    font-size: 0.9rem;
+    /* ตัวเล็กลง */
+    margin-bottom: 0.5rem;
+    /* ระยะห่างด้านล่าง */
+}
+
+.project-content p {
+    margin-bottom: 0.5rem;
+    /* ระยะห่างระหว่างย่อหน้า */
+}
+
+.tools {
+    display: flex;
+    /* ป้ายเครื่องมือเรียงเป็นแถว */
+    flex-wrap: wrap;
+    /* เต็มบรรทัดแล้วตัดลงบรรทัดใหม่ ไม่ล้นการ์ด */
+    gap: 0.5rem;
+    /* ช่องว่างระหว่างป้าย */
+    margin-block: 0.75rem;
+    /* ระยะนอกบนและล่าง */
+}
+
+.tools li {
+    background-color: var(--tag-bg-color);
+    /* พื้นฟ้าอ่อน */
+    color: var(--primary-dark-color);
+    /* ตัวอักษรน้ำเงินเข้ม */
+    padding: 0.2rem 0.7rem;
+    /* ระยะด้านในป้าย */
+    border-radius: 60px;
+    /* ทรงแคปซูล */
+    font-size: 0.85rem;
+    /* ตัวเล็ก */
+}
+
+
+/* =========================================================
+   หน้าติดต่อ
+========================================================= */
+
+.contact-grid {
+    display: grid;
+    /* จัดวางแบบตาราง */
+    grid-template-columns: 1fr 1fr;
+    /* 2 คอลัมน์เท่ากัน (ช่องทางติดต่อ | แบบฟอร์ม) */
+    gap: 1.5rem;
+    /* ช่องว่างระหว่างคอลัมน์ */
+}
+
+.contact-list li {
+    padding-block: 0.6rem;
+    /* ระยะห่างบนล่างของแต่ละช่องทาง */
+}
+
+.contact-list i {
+    color: var(--primary-color);
+    /* ไอคอนสีน้ำเงิน */
+    width: 25px;
+    /* ความกว้างเท่ากัน ข้อความจะตรงกันทุกบรรทัด */
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    /* ระยะห่างระหว่างช่องกรอกแต่ละช่อง */
+}
+
+.form-group label {
+    display: block;
+    /* ขึ้นบรรทัดใหม่เหนือช่องกรอก */
+    margin-bottom: 0.3rem;
+    /* ระยะห่างระหว่างชื่อช่องกับกล่องพิมพ์ */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    /* กว้างเต็มการ์ด */
+    padding: 0.6rem;
+    /* ระยะด้านในกล่องพิมพ์ */
+    border: 1px solid var(--border-color);
+    /* ขอบบางๆ */
+    border-radius: 0.5rem;
+    /* ขอบมน */
+    font-family: inherit;
+    /* ใช้ฟอนต์เดียวกับส่วนอื่น (ปกติกล่องพิมพ์ใช้ฟอนต์ระบบ) */
+    font-size: 1rem;
+    /* ขนาดตัวอักษรปกติ */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: 2px solid var(--secondary-color);
+    /* :focus = ตอนคลิกเข้าไปพิมพ์ แสดงเส้นขอบสีฟ้า */
+}
+
+.form-section fieldset {
+    padding: 1.5rem;
+    /* ระยะด้านในกรอบ */
+    border: 1px solid var(--border-color);
+    /* เส้นกรอบ */
+    border-radius: 0.75rem;
+    /* ขอบมน */
+}
+
+.form-section legend {
+    color: var(--primary-color);
+    /* ชื่อกรอบสีน้ำเงิน */
+    padding: 0 0.5rem;
+    /* เว้นซ้ายขวาให้ข้อความไม่ชนเส้นกรอบ */
+    font-weight: bold;
+    /* ตัวหนา */
+}
+
+.form-note {
+    color: var(--muted-text-color);
+    /* สีรอง */
+    font-size: 0.85rem;
+    /* ตัวเล็ก */
+    margin-top: 0.75rem;
+    /* ระยะห่างจากปุ่มส่ง */
+}
+
+button.btn {
+    border: none;
+    /* เอาขอบเริ่มต้นของ <button> ออก */
+    cursor: pointer;
+    /* เมาส์เป็นรูปมือ */
+    font-family: inherit;
+    /* ใช้ฟอนต์เดียวกับส่วนอื่น */
+    font-size: 1rem;
+    /* ขนาดตัวอักษรปกติ */
+}
+
+
+/* =========================================================
+   Footer (ส่วนท้ายเว็บ)
+========================================================= */
+
+.footer {
+    padding-block: 2rem;
+    /* ระยะด้านในบนและล่าง */
+    background-color: var(--footer-bg-color);
+    /* พื้นน้ำเงินเข้มเกือบดำ */
+    color: var(--light-text-color);
+    /* ตัวอักษรขาว */
+    margin-top: 3rem;
+    /* ระยะห่างจากเนื้อหาด้านบน */
+    text-align: center;
+    /* จัดกลางหน้า */
+}
+
+.footer-links {
+    display: flex;
+    /* ลิงก์เรียงเป็นแถว */
+    justify-content: center;
+    /* จัดกลางหน้า */
+    gap: 1.5rem;
+    /* ช่องว่างระหว่างลิงก์ */
+    margin-top: 0.5rem;
+    /* ระยะห่างจากข้อความ copyright */
+}
+
+.footer-links a {
+    color: var(--light-text-color);
+    /* ลิงก์สีขาว (บนพื้นเข้มจะได้อ่านออก) */
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    /* ชี้เมาส์แล้วขึ้นเส้นใต้ */
+}
+
+
+/* =========================================================
+   Responsive (ปรับตามขนาดหน้าจอ)
+   @media (max-width: 768px) = "เมื่อหน้าจอกว้างไม่เกิน 768px" โค้ดข้างในจะทำงานเฉพาะตอนนั้น
+========================================================= */
+
+
+/* หน้าจอขนาดกลาง (แท็บเล็ต) */
+
+@media (max-width: 992px) {
+    .hero-name {
+        font-size: 2.3rem;
+        /* ลดขนาดชื่อลงเล็กน้อย */
+    }
+    .hero-image img {
+        height: 300px;
+        /* ลดความสูงรูป (ความกว้างจำกัดด้วย max-width เดิม) */
+    }
+}
+
+
+/* หน้าจอขนาดเล็ก (โทรศัพท์มือถือ) */
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        /* เปลี่ยนจากเรียงแถวเป็นเรียงลง (ชื่ออยู่บน เมนูอยู่ล่าง) */
+        gap: 0.75rem;
+        /* ช่องว่างระหว่างชื่อกับเมนู */
+    }
+    .nav-list {
+        flex-wrap: wrap;
+        /* เมนูไม่พอให้ตัดลงบรรทัดใหม่ ไม่ล้นจอ */
+        justify-content: center;
+        /* จัดเมนูกลางหน้า */
+    }
+    .hero {
+        grid-template-columns: 1fr;
+        /* จาก 2 คอลัมน์เหลือ 1 คอลัมน์ */
+        text-align: center;
+        /* จัดข้อความกลางหน้า */
+    }
+    .hero-buttons {
+        justify-content: center;
+        /* จัดปุ่มกลางหน้า */
+    }
+    .hero-image {
+        order: -1;
+        /* ลำดับการแสดง: -1 = มาก่อนข้อความ (บนมือถือรูปอยู่บนสุด) */
+    }
+    .hero-image img {
+        height: 240px;
+        /* ลดขนาดรูปให้พอดีมือถือ */
+        width: 240px;
+        /* กว้าง = สูง ยังคงเป็นวงกลม */
+    }
+    .hero-name {
+        font-size: 2rem;
+        /* ลดขนาดชื่อลงอีก */
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+        /* หน้าติดต่อ: จาก 2 คอลัมน์เหลือ 1 คอลัมน์ */
+    }
+}

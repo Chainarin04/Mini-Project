@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!-- บอกเบราว์เซอร์ว่านี่คือเอกสาร HTML5 -->
+<html lang="th">
+<!-- lang="th" = เนื้อหาเป็นภาษาไทย -->
+
+<head>
+    <!-- <head> เก็บข้อมูลของหน้าเว็บ (ไม่แสดงบนหน้าจอ) -->
+
+    <!-- charset UTF-8 = ให้แสดงภาษาไทยได้ถูกต้อง -->
+    <meta charset="UTF-8">
+    <!-- viewport = ให้เว็บปรับขนาดตามจอมือถือ (จำเป็นสำหรับ Responsive) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- title = ชื่อที่แสดงบนแท็บเบราว์เซอร์ (โจทย์ให้แต่ละหน้าไม่ซ้ำกัน) -->
+    <title>หน้าแรก | พอร์ตโฟลิโอส่วนตัว</title>
+    <!-- เชื่อมไฟล์ CSS ภายนอก (ทุกหน้าใช้ไฟล์เดียวกัน) -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Font Awesome: ชุดไอคอน เรียกใช้ด้วยแท็ก <i class="fa-solid fa-ชื่อไอคอน"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <!-- <body> = ส่วนที่แสดงบนหน้าจอทั้งหมด -->
+
+    <!-- ============== Header (ส่วนหัว: ชื่อเว็บ + เมนู) ============== -->
+    <!-- <header> เป็น Semantic HTML บอกว่านี่คือส่วนหัวของเว็บ -->
+    <header class="header">
+        <div class="container header-content">
+            <div>
+                <!-- h1 = หัวข้อหลักของเว็บ -->
+                <h1 class="header-title"><i class="fa-solid fa-laptop-code"></i> ชัยณรินทร์ ผุดผาย</h1>
+                <p class="header-subtitle">Portfolio แนะนำตัว</p>
+            </div>
+
+            <!-- <nav> = ส่วนเมนูนำทาง (Semantic HTML) -->
+            <nav>
+                <!-- ul/li = รายการ ใช้ทำเมนู | href = ไฟล์ที่จะลิงก์ไป -->
+                <ul class="nav-list">
+                    <!-- class="active" อยู่ที่หน้าปัจจุบัน -> CSS จะทำให้เมนูนี้เป็นสีน้ำเงิน -->
+                    <li><a href="index.html" class="active">หน้าแรก</a></li>
+                    <li><a href="about.html">ประวัติและทักษะ</a></li>
+                    <li><a href="portfolio.html">ผลงาน</a></li>
+                    <li><a href="contact.html">ติดต่อ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- <main> = เนื้อหาหลักของหน้า (มีได้ 1 อันต่อหน้า) -->
+    <main class="container">
+
+        <!-- ============== ส่วนแนะนำตัว (Hero) ============== -->
+        <!-- <section> = แบ่งหน้าเป็นส่วนๆ ตามเนื้อหา -->
+        <section class="hero">
+            <!-- คอลัมน์ซ้าย: ข้อความแนะนำตัว -->
+            <div class="hero-content">
+                <p>สวัสดีครับ ผมชื่อ</p>
+                <h2 class="hero-name">ชัยณรินทร์ ผุดผาย</h2>
+                <p class="hero-position">ตำแหน่งที่สนใจ: Front-End Developer</p>
+                <p class="hero-text">
+                    นักศึกษาสาขาวิศวกรรมซอฟต์แวร์ที่สนใจการพัฒนาเว็บไซต์ ชอบออกแบบหน้าเว็บให้ใช้งานง่ายและสวยงาม พร้อมเรียนรู้สิ่งใหม่ ๆ และทำงานร่วมกับผู้อื่น
+                </p>
+                <!-- ปุ่ม 2 ปุ่ม (จริงๆ คือลิงก์ที่ตกแต่งให้เหมือนปุ่ม ด้วย class btn) -->
+                <div class="hero-buttons">
+                    <a href="portfolio.html" class="btn btn-primary">ดูผลงาน</a>
+                    <a href="contact.html" class="btn btn-outline">ติดต่อฉัน</a>
+                </div>
+            </div>
+
+            <!-- คอลัมน์ขวา: รูปประจำตัว -->
+            <div class="hero-image">
+                <!-- alt = ข้อความอธิบายรูป (แสดงเมื่อรูปโหลดไม่ได้ และช่วยผู้ใช้โปรแกรมอ่านหน้าจอ)
+                     เปลี่ยน src เป็นไฟล์รูปของคุณเองได้ เช่น src="img/profile.jpg" -->
+                <img src="https://i.pinimg.com/1200x/6d/f9/d8/6df9d806a575c94a3b71edcf2d7a2634.jpg" alt="รูปประจำตัว">
+            </div>
+        </section>
+
+        <!-- ============== จุดเด่น (การ์ด 3 ใบ) ============== -->
+        <section>
+            <h2 class="section-title">จุดเด่นของฉัน</h2>
+
+            <!-- .card-grid = ตารางที่จัดการ์ดเรียงอัตโนมัติ (ดูใน CSS) -->
+            <div class="card-grid">
+                <!-- <article> = เนื้อหาที่แยกเป็นชิ้นๆ ได้ในตัวเอง เช่น การ์ดแต่ละใบ -->
+                <article class="card">
+                    <h3><i class="fa-solid fa-code"></i> เขียนเว็บไซต์</h3>
+                    <p>เขียน HTML และ CSS ได้อย่างเป็นระเบียบ และทำให้เว็บแสดงผลได้ทั้งคอมพิวเตอร์และมือถือ</p>
+                </article>
+
+                <article class="card">
+                    <h3><i class="fa-solid fa-palette"></i> ใส่ใจการออกแบบ</h3>
+                    <p>เลือกสีและตัวอักษรให้อ่านง่าย จัดวางองค์ประกอบให้สอดคล้องกันทั้งเว็บไซต์</p>
+                </article>
+
+                <article class="card">
+                    <h3><i class="fa-solid fa-people-group"></i> ทำงานเป็นทีม</h3>
+                    <p>เคยทำโปรเจกต์กลุ่มในรายวิชา สื่อสารชัดเจน และรับผิดชอบงานที่ได้รับมอบหมาย</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============== Footer (ส่วนท้ายเว็บ — เหมือนกันทุกหน้า) ============== -->
+    <!-- <footer> = ส่วนท้ายของเว็บ (Semantic HTML) -->
+    <footer class="footer">
+        <!-- &copy; = สัญลักษณ์ © -->
+        <p>&copy; 2026 ชัยณรินทร์ ผุดผาย</p>
+        <ul class="footer-links">
+            <!-- target="_blank" = เปิดลิงก์ในแท็บใหม่ (ใช้กับลิงก์ภายนอก) -->
+            <li><a href="https://github.com/Chainarin04" target="_blank">GitHub</a></li>
+            <!-- mailto: = กดแล้วเปิดโปรแกรมอีเมล -->
+            <li><a href="https://mail.google.com/mail/?view=cm&to=pakzaza115@gmail.com">Email</a></li>
+        </ul>
+    </footer>
+
+</body>
+
+</html>
